@@ -4,7 +4,7 @@ type ButtonType = {
     onClick? : () => void
 }
 
-const Button = ({children, classname}: ButtonType)  => {
+const BlackButton = ({children, classname}: ButtonType)  => {
   return (
     <button onClick={() => {}} className={`py-2 px-2 bg-black text-white rounded-md shadow-md hover:opacity-75 ${classname}`}>
       <h1>{children}</h1>
@@ -12,4 +12,4 @@ const Button = ({children, classname}: ButtonType)  => {
   )
 }
 
-export default Button
+export default BlackButton
