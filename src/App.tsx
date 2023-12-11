@@ -7,10 +7,6 @@ import { AnimatePresence } from "framer-motion";
 const App = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
   const handleCloseModal = () => {
     setOpenModal(false);
   };

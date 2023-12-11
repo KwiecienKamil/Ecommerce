@@ -1,6 +1,8 @@
 
-import ProductItem from "./ProductItem"
+import Products from "./Products"
+import ProductItem from "./Products"
 import Searchbar from "./Searchbar"
+
 
 const Home = () => {
   return (
@@ -15,7 +17,7 @@ const Home = () => {
       <Searchbar />
     </div>
     <div className="w-[75%] grid grid-cols-4 mt-8">
-      <ProductItem />
+      <Products />
     </div>
   </div>
   )
