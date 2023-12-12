@@ -5,10 +5,11 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import BlackButton from "./BlackButton"
 
 type Props = {
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
+  setProductsData: React.Dispatch<React.SetStateAction<object>>
 }
 
-const Navbar: FC<Props> = ({setOpenModal}) => {
+const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
   return (
     <div className="h-20 w-full flex justify-center">
       <div className="h-full w-[70%] flex items-center justify-between">

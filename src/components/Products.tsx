@@ -1,11 +1,16 @@
 import {FC} from 'react'
-import data from '../data/Data'
 import ProductItem from './ProductItem'
+import {type ProductItemProps} from '../components/ProductItem'
 
-const Products = () => {
+type ProductsProps = {
+  productsData: Array<object>
+  ProductItem: FC
+  item: JSX.Element
+}
+const Products:FC<ProductsProps> = ({productsData}) => {
   return(
-    data.map((item) => {
-     return <ProductItem sizes={item.sizes} img={item.img} brand={item.brand} name={item.name}/>
+    productsData.map((item):ProductsProps => {
+      return <ProductItem id={item.id} sizes={item.sizes} img={item.img} brand={item.brand} name={item.name}/>
     })
   )
 }

@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 
-type Props = {
+export type ProductItemProps = {
+  id: string,
  sizes: string,
  img:string,
  brand:string,
  name:string
 }
 
-const ProductItem:FC<Props> = ({sizes,img,brand,name}) => {
+const ProductItem:FC<ProductItemProps> = ({sizes,img,brand,name}) => {
   return (
     <div 
       className="relative flex flex-col items-center justify-center py-6 mx-6 cursor-pointer group ">
