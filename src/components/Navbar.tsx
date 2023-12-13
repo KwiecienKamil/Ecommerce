@@ -3,26 +3,29 @@ import logo from '../assets/logo.png'
 import {AiOutlineUser} from 'react-icons/ai'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import BlackButton from "./BlackButton"
+import data from "../data/Data"
+import { ProductProps } from "../App"
 
 type Props = {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
-  setProductsData: React.Dispatch<React.SetStateAction<{
-    id: string;
-    sizes: string;
-    img: string;
-    brand: string;
-    name: string;
-}[]>>
+  setProductsData: React.Dispatch<React.SetStateAction<ProductProps[]>>
 }
 
 const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
+  const filterType = (category:string) => {
+    setProductsData(
+      data.filter((item) => {
+        return item.category === category;
+      })
+    );
+  };
   return (
     <div className="h-20 w-full flex justify-center">
       <div className="h-full w-[70%] flex items-center justify-between">
         <div className="flex gap-2">
-        <BlackButton>Men</BlackButton>
-        <BlackButton>Woman</BlackButton>
-        <BlackButton>Kids</BlackButton>
+        <BlackButton onClick={() => filterType("Men")}>Men</BlackButton>
+        <BlackButton onClick={() => filterType("Woman")}>Woman</BlackButton>
+        <BlackButton onClick={() => filterType("Kids")}>Kids</BlackButton>
         </div>
         <div className="h-full flex pr-16 font-logo">
         <a href="/" className="relative h-full flex items-center justify-start">

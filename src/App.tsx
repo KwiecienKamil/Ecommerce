@@ -10,11 +10,14 @@ export type ProductProps = {
    sizes:string, 
    img: string, 
    brand: string, 
-   name: string 
+   name: string,
+   category: string
 }
 const App = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [productsData, setProductsData] =useState<ProductProps[]>(data);
+  const [productsData, setProductsData] = useState<ProductProps[]>(data);
+
+
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -22,7 +25,7 @@ const App = () => {
   return (
     <>
       <Navbar setOpenModal={setOpenModal} setProductsData={setProductsData} />
-      <Home productsData={productsData} />
+      <Home productsData={productsData} setProductsData={setProductsData}/>
       <AnimatePresence wait={true} initial={false} ExitComplete={() => null}>
         {openModal && <CartModal onClose={handleCloseModal} />}
       </AnimatePresence>

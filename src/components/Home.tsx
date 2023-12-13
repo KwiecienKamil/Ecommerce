@@ -3,22 +3,31 @@ import ProductItem from "./Products"
 import Searchbar from "./Searchbar"
 import data from '../data/Data'
 import { FC } from "react"
-import { type ProductsProps } from "./Products"
-import { type ProductProps } from "../App"
+import { type ProductProps } from'../App' 
+
 
 type HomeProps = {
-  productsData:ProductProps[]
+  productsData: ProductProps[];
+  setProductsData: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+  onClick? : () => void;
 }
 
-const Home = ({productsData}: HomeProps) => {
+const Home: FC<HomeProps> = ({productsData, setProductsData}) => {
+  const filterClothes = (name:string) => {
+    setProductsData(
+      data.filter((item) => {
+        return item.name === name;
+      })
+    );
+  };
   return (
     <div className="flex flex-col items-center">
     <div className="w-[70%] flex justify-between">
       <div className="flex items-center gap-4">
-      <button className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">T-shirt</button>
-      <button className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Hoodie</button>
-      <button className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Jeans</button>
-      <button className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Sneakers</button>
+      <button onClick={() => filterClothes("T-shirt")} className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">T-shirt</button>
+      <button onClick={() => filterClothes("Hoodie")} className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Hoodie</button>
+      <button onClick={() => filterClothes("Jeans")} className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Jeans</button>
+      <button onClick={() => filterClothes("Sneakers")} className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300">Sneakers</button>
       </div>
       <Searchbar />
     </div>
