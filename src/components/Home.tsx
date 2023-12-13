@@ -1,15 +1,16 @@
-
 import Products from "./Products"
 import ProductItem from "./Products"
 import Searchbar from "./Searchbar"
 import data from '../data/Data'
 import { FC } from "react"
+import { type ProductsProps } from "./Products"
+import { type ProductProps } from "../App"
 
 type HomeProps = {
-  productsData: object
+  productsData:ProductProps[]
 }
-const Home:FC<HomeProps> = ({productsData}) => {
-  
+
+const Home = ({productsData}: HomeProps) => {
   return (
     <div className="flex flex-col items-center">
     <div className="w-[70%] flex justify-between">

@@ -8,7 +8,7 @@ export type ProductItemProps = {
  name:string
 }
 
-const ProductItem:FC<ProductItemProps> = ({sizes,img,brand,name}) => {
+const ProductItem = ({sizes,img,brand,name}:ProductItemProps) => {
   return (
     <div 
       className="relative flex flex-col items-center justify-center py-6 mx-6 cursor-pointer group ">

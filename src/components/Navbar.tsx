@@ -6,7 +6,13 @@ import BlackButton from "./BlackButton"
 
 type Props = {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
-  setProductsData: React.Dispatch<React.SetStateAction<object>>
+  setProductsData: React.Dispatch<React.SetStateAction<{
+    id: string;
+    sizes: string;
+    img: string;
+    brand: string;
+    name: string;
+}[]>>
 }
 
 const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
