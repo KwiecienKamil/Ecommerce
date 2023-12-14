@@ -1,15 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { FC, Fragment } from 'react'
 import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
 
+
+
 type BackdropType = {
   children: React.ReactNode;
+ 
 }
 
-const Backdrop = ({children}: BackdropType) => {
-    return (
-        <Fragment >
-          {ReactDOM.createPortal(
+const Backdrop:FC<BackdropType> = ({children}) => {
+    return ReactDOM.createPortal(
             <motion.div 
             className="fixed top-0 left-0 h-screen w-full backdrop-brightness-50 flex items-center justify-center"
             initial={{opacity: 0}}
@@ -17,9 +18,7 @@ const Backdrop = ({children}: BackdropType) => {
             exit={{opacity: 0}}>
               {children}
             </motion.div>,
-            document.getElementById("portal")
-          )}
-        </Fragment>
-      );
+           document.getElementById("portal")!
+          )
     };
 export default Backdrop
