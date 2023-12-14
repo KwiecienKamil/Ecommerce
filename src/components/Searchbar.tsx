@@ -7,7 +7,6 @@ import data from "../data/Data";
 type SearchbarProps = {
   setProductsData: React.Dispatch<React.SetStateAction<ProductProps[]>>;
   onClick? : () => void;
-  onChange : React.ChangeEvent<HTMLInputElement>
 };
 
 const Searchbar: FC<SearchbarProps> = ({ setProductsData }) => {
