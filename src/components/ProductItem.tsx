@@ -10,6 +10,7 @@ export type ProductItemProps = {
 }
 
 const ProductItem: FC<ProductItemProps> = ({sizes,img,brand,name}) => {
+  
   return (
     <div 
       className="relative flex flex-col items-center justify-center py-6 mx-6 cursor-pointer group ">
