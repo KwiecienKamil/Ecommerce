@@ -11,7 +11,6 @@ export type ProductItemProps = {
 }
 
 const ProductItem: FC<ProductItemProps> = ({sizes,img,brand,name, id}) => {
-  
   return (
     <Link to={`/products/${id}`}>
     <div key={id}

@@ -4,7 +4,7 @@ export const data = [
     id: "001",
     brand: "Tommy Jeans",
     name: 'T-shirt',
-    img: 'https://img01.ztat.net/article/spp-media-p1/eff2bcfa333537e1806c4e4c9c170129/d25ddd47a15740ffafbed4f77f0691f0.png?imwidth=156&filter=packshot',
+    img: 'https://img01.ztat.net/article/spp-media-p1/b8a752a9f1d93bcdbeba82f52aedd62c/93b816dffeb445a18c9ffad465ca7834.jpg?imwidth=1800&filter=packshot',
     price: 32.99,
     sizes: "S L XL",
     category: "Men"
