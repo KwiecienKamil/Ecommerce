@@ -10,6 +10,7 @@ import ProductDetails from "./components/ProductDetails";
 
 export type ProductProps = {
    id:string,
+   price: number,
    sizes:string, 
    img: string, 
    brand: string, 
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <>
       <Navbar setOpenModal={setOpenModal} setProductsData={setProductsData} />
-      <AnimatePresence wait={true} initial={false} ExitComplete={() => null}>
+      <AnimatePresence>
         {openModal && <CartModal onClose={handleCloseModal} />}
       </AnimatePresence>
       <Routes>
