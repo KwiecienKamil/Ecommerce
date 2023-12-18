@@ -5,6 +5,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import BlackButton from "./BlackButton"
 import data from "../data/Data"
 import { ProductProps } from "../App"
+import { useAppSelector } from "./store/store"
 
 type Props = {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -12,6 +13,7 @@ type Props = {
 }
 
 const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
+  const selector = useAppSelector((state) =>state.product.products)
   const filterType = (category:string) => {
     setProductsData(
       data.filter((item) => {
@@ -32,9 +34,9 @@ const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
             <h1 className="z-[5] text-[25px]">Ecommerce</h1>
             </a>
         </div>
-        <div className="flex text-[25px] gap-4 relative">
+        <div className="flex text-[26px] gap-4 relative">
         <button><AiOutlineUser /></button>
-        <button onClick={() => setOpenModal(true)}><AiOutlineShoppingCart /></button>
+        <button className="relative" onClick={() => setOpenModal(true)}><AiOutlineShoppingCart /><span className="absolute -bottom-3 -right-2 text-[10px] text-white bg-black py-1 px-2 rounded-full opacity-50">{selector.length}</span></button>
         </div>
       </div>
     </div>

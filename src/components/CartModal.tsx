@@ -11,6 +11,11 @@ type Props = {
 
 const CartModal: FC<Props> = ({onClose}) => {
   const selector = useAppSelector((state) =>state.product.products)
+
+  const price = selector
+  .map((product) => product.price)
+  .reduce((total:number, value) => total + value , 0).toFixed(2);
+
   const dropIn = {
     hidden: {
       y: "-100vh",
@@ -45,14 +50,18 @@ const CartModal: FC<Props> = ({onClose}) => {
         </div>
         <div className="flex flex-col px-4 mt-2">
           {selector.map((item) => (
-            <div className="flex items-center justify-center gap-8">
+            <div className="flex items-center justify-between w-[95%]">
               <img src={item.img} alt="xd"  className="w-[50px]"/>
               <div className="flex flex-col items-center">
-              <p>{item.brand}</p>
               <p>{item.name}</p>
+              <p>{item.brand}</p>
               </div>
               <p>{item.sizes}</p>
               <p className="font-semibold">{`${item.price}$`}</p>
+              <div className="absolute bottom-0 left-0 w-full text-xl font-semibold flex items-center justify-between px-2 py-2">
+                <p>Total: {`${price}$`}</p>
+                <button>Order</button>
+              </div>
             </div>
           ))}
         </div>

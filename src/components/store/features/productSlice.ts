@@ -12,7 +12,6 @@ export interface Product{
 
 interface ProductsState {
     products: Product[],
-    
 }
 
 const initialState:ProductsState = {
