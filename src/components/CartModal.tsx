@@ -60,7 +60,7 @@ const CartModal: FC<Props> = ({onClose}) => {
               <p className="font-semibold">{`${item.price}$`}</p>
               <div className="absolute bottom-0 left-0 w-full text-xl font-semibold flex items-center justify-between px-2 py-2">
                 <p>Total: {`${price}$`}</p>
-                <button>Order</button>
+                <button className="p-2 bg-accent rounded-xl text-lg hover:bg-orange-400 duration-300">Order</button>
               </div>
             </div>
           ))}

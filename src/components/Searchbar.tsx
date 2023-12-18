@@ -28,9 +28,9 @@ const Searchbar: FC<SearchbarProps> = ({ setProductsData }) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <BlackButton classname="rounded-sm py-[7px] mb-[.5px]" onClick={filterType}>
+      <button className="p-[7px] bg-black text-white rounded-r-xl" onClick={filterType}>
         <BsSearch />
-      </BlackButton>
+      </button>
     </div>
   );
 };

@@ -10,7 +10,8 @@ export default {
         logo: 'Pacifico'
       },
       colors: {
-        dwhite: "#efeff0"
+        dwhite: "#efeff0",
+        accent: "#F9B872"
       },
     },
   },

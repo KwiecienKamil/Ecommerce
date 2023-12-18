@@ -31,12 +31,12 @@ const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
         </div>
         <div className="h-full flex pr-16 font-logo">
         <a href="/" className="relative h-full flex items-center justify-start">
-            <h1 className="z-[5] text-[25px]">Ecommerce</h1>
+            <h1 className="z-[5] text-[25px] text-accent">Ecommerce</h1>
             </a>
         </div>
-        <div className="flex text-[26px] gap-4 relative">
+        <div className="flex text-[26px] gap-4 relative text-accent font-bold">
         <button><AiOutlineUser /></button>
-        <button className="relative" onClick={() => setOpenModal(true)}><AiOutlineShoppingCart /><span className="absolute -bottom-3 -right-2 text-[10px] text-white bg-black py-1 px-2 rounded-full opacity-50">{selector.length}</span></button>
+        <button className="relative" onClick={() => setOpenModal(true)}><AiOutlineShoppingCart /><span className="absolute -bottom-3 -right-3 text-[10px] text-white bg-gray-500 py-1 px-2 rounded-full opacity-50">{selector.length}</span></button>
         </div>
       </div>
     </div>
