@@ -2,14 +2,19 @@
 import { FC } from "react";
 import Backdrop from "./Backdrop";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAppSelector } from "./store/store";
+import { useAppDispatch, useAppSelector } from "./store/store";
 import { IoCloseCircle } from "react-icons/io5";
+import { MdDeleteForever } from "react-icons/md";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { FiMinusCircle } from "react-icons/fi";
+import { removeFromCart } from "./store/features/productSlice";
 
 type Props = {
   onClose: () => void
 }
 
 const CartModal: FC<Props> = ({onClose}) => {
+  const dispatch = useAppDispatch();
   const selector = useAppSelector((state) =>state.product.products)
   
 
@@ -37,6 +42,7 @@ const CartModal: FC<Props> = ({onClose}) => {
       opacity: 0
     }
   }
+
   return (
     <Backdrop>
       <motion.div 
@@ -59,7 +65,12 @@ const CartModal: FC<Props> = ({onClose}) => {
               </div>
               <p>{item.sizes}</p>
               <p className="font-semibold">{`${item.price?.toFixed(2)}$`}</p>
+              <div className="flex items-center">
+              <button className="text-lg text-yellow-500 mr-1"><FiMinusCircle /></button>
               <p>{`x${item.cartQuantity}`}</p>
+              <button className="text-lg text-green-500 ml-1"><IoMdAddCircleOutline /></button>
+              <button onClick={() => dispatch(removeFromCart(item))} className="text-xl text-red-600 ml-4"><MdDeleteForever /></button>
+              </div>
               <div className="absolute bottom-0 left-0 w-full text-xl font-semibold flex items-center justify-between px-2 py-2">
                 <p>Total: {`${price * item.cartQuantity}$`}</p>
                 <button className="p-2 bg-accent rounded-xl text-lg hover:bg-orange-400 duration-300">Order</button>

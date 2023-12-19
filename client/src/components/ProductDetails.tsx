@@ -39,7 +39,6 @@ const ProductDetails: FC = () => {
         cartQuantity: 0
       })
     )
-    console.log(size);
   }
   return (
     <div className="w-full flex items-center justify-center">
