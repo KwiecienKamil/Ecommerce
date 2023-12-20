@@ -57,11 +57,14 @@ export const ProductSlice=createSlice({
             toast.success("Product removed", {
                 position: "bottom-left"
             })
+         },
+         increaseQuantity: (state,action) => {
+            const curP = state.products.find(item => item.sizes === action.payload.sizes)
+            curP!.cartQuantity += 1
          }
-        
     }
     
 })
 
 export default ProductSlice.reducer;
-export const {addToCart, removeFromCart} = ProductSlice.actions;
+export const {addToCart, removeFromCart, increaseQuantity} = ProductSlice.actions;
