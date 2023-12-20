@@ -1,7 +1,7 @@
 
 import { FC } from "react";
 import Backdrop from "./Backdrop";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "./store/store";
 import { IoCloseCircle } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
@@ -18,9 +18,9 @@ const CartModal: FC<Props> = ({onClose}) => {
   const selector = useAppSelector((state) =>state.product.products)
   
 
-  const price = selector
+  const price:string = selector
   .map((product) => product.price)
-  .reduce((total:number, value:number | undefined) => total + value ,0).toFixed(2);
+  .reduce((total:number, value) => total + value! , 0).toFixed(2);
 
   const dropIn = {
     hidden: {
@@ -72,7 +72,7 @@ const CartModal: FC<Props> = ({onClose}) => {
               <button onClick={() => dispatch(removeFromCart(item))} className="text-xl text-red-600 ml-4"><MdDeleteForever /></button>
               </div>
               <div className="absolute bottom-0 left-0 w-full text-xl font-semibold flex items-center justify-between px-2 py-2">
-                <p>Total: {`${price * item.cartQuantity}$`}</p>
+                <p>Total: {`${+price * item.cartQuantity}$`}</p>
                 <button className="p-2 bg-accent rounded-xl text-lg hover:bg-orange-400 duration-300">Order</button>
               </div>
             </div>

@@ -1,8 +1,6 @@
 import { FC } from "react"
 import {AiOutlineUser} from 'react-icons/ai'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
-import BlackButton from "./BlackButton"
-import data from "../data/Data"
 import { ProductProps } from "../App"
 import { useAppSelector } from "./store/store"
 
@@ -11,23 +9,11 @@ type Props = {
   setProductsData: React.Dispatch<React.SetStateAction<ProductProps[]>>
 }
 
-const Navbar: FC<Props> = ({setOpenModal,setProductsData}) => {
+const Navbar: FC<Props> = ({setOpenModal}) => {
   const selector = useAppSelector((state) =>state.product.products)
-  const filterType = (category:string) => {
-    setProductsData(
-      data.filter((item) => {
-        return item.category === category;
-      })
-    );
-  };
   return (
     <div className="h-20 w-full flex justify-center">
       <div className="h-full w-[70%] flex items-center justify-between">
-        <div className="flex gap-2">
-        <BlackButton onClick={() => filterType("Men")}>Men</BlackButton>
-        <BlackButton onClick={() => filterType("Woman")}>Woman</BlackButton>
-        <BlackButton onClick={() => filterType("Kids")}>Kids</BlackButton>
-        </div>
         <div className="h-full flex pr-16 font-logo">
         <a href="/" className="relative h-full flex items-center justify-start">
             <h1 className="z-[5] text-[25px] text-accent hover:text-orange-400 duration-300">Ecommerce</h1>

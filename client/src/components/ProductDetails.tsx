@@ -1,14 +1,12 @@
-import  { FC, useState } from "react";
+import { FC, useState } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data/Data";
 import Select from "react-select";
-import BlackButton from "./BlackButton";
-import { Product, addToCart } from "./store/features/productSlice";
-import { useAppDispatch} from "./store/store";
-import CartModal from "./CartModal";
+import { addToCart } from "./store/features/productSlice";
+import { useAppDispatch } from "./store/store";
 
 const ProductDetails: FC = () => {
-  const [size,setSize] = useState<string>("")
+  const [size, setSize] = useState<string>("");
 
   const dispatch = useAppDispatch();
   const { id } = useParams();
@@ -29,17 +27,17 @@ const ProductDetails: FC = () => {
   const handleDispatch = () => {
     dispatch(
       addToCart({
-        id:product?.id,
-        sizes:size,
+        id: product?.id,
+        sizes: size,
         price: product?.price,
         img: product?.img,
-        brand:product?.brand,
+        brand: product?.brand,
         name: product?.name,
         category: product?.name,
-        cartQuantity: 0
+        cartQuantity: 0,
       })
-    )
-  }
+    );
+  };
   return (
     <div className="w-full flex items-center justify-center">
       <div className="flex gap-4 py-4 relative">
@@ -54,11 +52,13 @@ const ProductDetails: FC = () => {
           <h2 className="">{product?.brand}</h2>
           <h3 className="text-xl">{product?.name}</h3>
           <p className="font-semibold mt-4">{`${product?.price}$`}</p>
-          <Select options={options} onChange={(SelectedOption:any) => setSize(SelectedOption.value)} styles={colorStyles} className="mt-32" />
-          <button
-            onClick={handleDispatch}
-            className="w-[200px] mt-2 text-lg"
-          >
+          <Select
+            options={options}
+            onChange={(SelectedOption: any) => setSize(SelectedOption.value)}
+            styles={colorStyles}
+            className="mt-32"
+          />
+          <button onClick={handleDispatch} className="w-[200px] mt-2 text-lg bg-accent py-2 px-4 hover:bg-orange-400 duration-300 rounded-lg">
             Add To Cart
           </button>
         </div>
