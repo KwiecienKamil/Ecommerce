@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import {toast} from "react-toastify"
 
 export interface Product{
     id:string | undefined ,
@@ -17,7 +18,7 @@ interface ProductsState {
 }
 
 const initialState:ProductsState = {
-    products: [],
+    products: localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products") || `[]`) : [],
     cartQuantity: 0
 
 }
@@ -30,19 +31,32 @@ export const ProductSlice=createSlice({
             const itemIndex = state.products.findIndex(item => item.id === action.payload.id);
             if(itemIndex >= 0) {
                 if(state.products.find(item => item.sizes === action.payload.sizes)) {
-                    alert("Already in cart")
+                    toast.error("Already in cart", {
+                    position: "bottom-left"
+                })
                 }else {
                     const tempProduct = {...action.payload, cartQuantity: 1}
-                state.products.push(tempProduct);
+                    state.products.push(tempProduct);
+                    toast.success("Added product to cart", {
+                        position: "bottom-left"
+                    })
                 }
             }else {
                 const tempProduct = {...action.payload, cartQuantity: 1}
                 state.products.push(tempProduct);
+                toast.success("Added product to cart", {
+                    position: "bottom-left"
+                })
             }       
+            localStorage.setItem("products", JSON.stringify(state.products))
          },
          removeFromCart: (state,action) => {
             const updatedCart = state.products.filter((item) => item.sizes !== action.payload.sizes)
             state.products = updatedCart
+            localStorage.setItem("products", JSON.stringify(state.products))
+            toast.success("Product removed", {
+                position: "bottom-left"
+            })
          }
         
     }

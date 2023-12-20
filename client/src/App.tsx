@@ -7,6 +7,8 @@ import data from "./data/Data";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import ProductDetails from "./components/ProductDetails";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 export type ProductProps = {
   id: string;
@@ -26,6 +28,7 @@ const App = () => {
   };
   return (
     <>
+      <ToastContainer />
       <Navbar setOpenModal={setOpenModal} setProductsData={setProductsData} />
       <AnimatePresence>
         {openModal && <CartModal onClose={handleCloseModal} />}
