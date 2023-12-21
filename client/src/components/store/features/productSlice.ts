@@ -61,10 +61,18 @@ export const ProductSlice=createSlice({
          increaseQuantity: (state,action) => {
             const curP = state.products.find(item => item.sizes === action.payload.sizes)
             curP!.cartQuantity += 1
+            localStorage.setItem("products", JSON.stringify(state.products))
+         },
+         decreaseQuantity: (state,action) => {
+            const curP = state.products.find(item => item.sizes === action.payload.sizes)
+            if(curP!.cartQuantity > 1) {
+            curP!.cartQuantity -= 1; 
+            }
+            localStorage.setItem("products", JSON.stringify(state.products))
          }
     }
     
 })
 
 export default ProductSlice.reducer;
-export const {addToCart, removeFromCart, increaseQuantity} = ProductSlice.actions;
+export const {addToCart, removeFromCart, increaseQuantity, decreaseQuantity} = ProductSlice.actions;

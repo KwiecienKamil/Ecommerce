@@ -1,4 +1,3 @@
-
 import { FC } from "react";
 import Backdrop from "./Backdrop";
 import { motion } from "framer-motion";
@@ -7,7 +6,7 @@ import { IoCloseCircle } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiMinusCircle } from "react-icons/fi";
-import { increaseQuantity, removeFromCart } from "./store/features/productSlice";
+import { decreaseQuantity, increaseQuantity, removeFromCart } from "./store/features/productSlice";
 
 type Props = {
   onClose: () => void
@@ -66,7 +65,7 @@ const CartModal: FC<Props> = ({onClose}) => {
               <p>{item.sizes}</p>
               <p className="font-semibold">{`${item.price?.toFixed(2)}$`}</p>
               <div className="flex items-center">
-              <button className="text-lg text-yellow-500 mr-1"><FiMinusCircle /></button>
+              <button onClick={() => dispatch(decreaseQuantity(item))} className="text-lg text-yellow-500 mr-1"><FiMinusCircle /></button>
               <p>{`x${item.cartQuantity}`}</p>
               <button onClick={() => dispatch(increaseQuantity(item))} className="text-lg text-green-500 ml-1"><IoMdAddCircleOutline /></button>
               <button onClick={() => dispatch(removeFromCart(item))} className="text-xl text-red-600 ml-4"><MdDeleteForever /></button>
