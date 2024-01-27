@@ -20,5 +20,5 @@ Searching&filtering products, adding/removing to/from shopping cart, notificatio
 + ***Single page product page routing***
 + ***Improved Tailwind***
 + ***Improved Redux***
-+ + ***Improved Typescript***
++ ***Improved Typescript***
 
