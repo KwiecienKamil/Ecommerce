@@ -17,9 +17,24 @@ const CartModal: FC<Props> = ({onClose}) => {
   const selector = useAppSelector((state) =>state.product.products)
   
 
-  const price:string = selector
-  .map((product) => product.price)
-  .reduce((total:number, value) => total + value! , 0).toFixed(2);
+  const price:(number | undefined)[] = selector
+  .map((product) => (product.price))
+
+  const quantity:(number | undefined)[] = selector.map((product) => (product.cartQuantity))
+
+  let TotalPriceArr:any[] = []
+
+  const totalPrice = () => {
+    for(let i=0; i<price.length; i++) {
+      TotalPriceArr.push(price[i] * quantity[i])
+    }
+  }
+  totalPrice()
+
+  const getTotalPrice = TotalPriceArr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
 
   const dropIn = {
     hidden: {
@@ -71,7 +86,7 @@ const CartModal: FC<Props> = ({onClose}) => {
               <button onClick={() => dispatch(removeFromCart(item))} className="text-xl text-red-600 ml-4"><MdDeleteForever /></button>
               </div>
               <div className="absolute bottom-0 left-0 w-full text-xl font-semibold flex items-center justify-between px-2 py-2">
-                <p>Total: {`${(+price * item.cartQuantity).toFixed(2)}$`}</p>
+                <p>Total: {`${getTotalPrice.toFixed(2)}$`}</p>
                 <button className="p-2 bg-accent rounded-xl text-lg hover:bg-orange-400 duration-300">Order</button>
               </div>
             </div>
