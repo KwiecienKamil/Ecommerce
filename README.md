@@ -17,7 +17,8 @@ Searching&filtering products, adding/removing to/from shopping cart, notificatio
 
 
 **`What I've Learnt`**
-+ ***Single page product page***
++ ***Single page product page routing***
 + ***Improved Tailwind***
 + ***Improved Redux***
++ + ***Improved Typescript***
 
