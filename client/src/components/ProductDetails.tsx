@@ -39,11 +39,11 @@ const ProductDetails: FC = () => {
     );
   };
   return (
-    <div className="w-full flex items-center justify-center">
-      <div className="flex gap-4 py-4 relative">
-        <div className="h-auto">
+    <div className="h-[90vh] w-full flex items-center justify-center">
+      <div className="flex flex-col md:flex-row gap-4 py-4 relative">
+        <div className="h-auto flex justify-center">
           <img
-            className="w-[500px] object-cover "
+            className="lg:w-[500px] w-[250px] sm:w-[300px] md:w-[400px] object-cover mt-8"
             src={product?.img}
             alt={`product/${id}`}
           />
@@ -56,9 +56,9 @@ const ProductDetails: FC = () => {
             options={options}
             onChange={(SelectedOption: any) => setSize(SelectedOption.value)}
             styles={colorStyles}
-            className="mt-32"
+            className="mt-4 md:mt-32"
           />
-          <button onClick={handleDispatch} className="w-[200px] mt-2 text-lg bg-accent py-2 px-4 hover:bg-orange-400 duration-300 rounded-lg">
+          <button onClick={handleDispatch} className="w-[300px] md:w-[200px] mt-2 text-lg bg-accent py-2 px-4 hover:bg-orange-400 duration-300 rounded-lg">
             Add To Cart
           </button>
         </div>

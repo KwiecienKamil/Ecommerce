@@ -4,7 +4,7 @@ import {toast} from "react-toastify"
 export interface Product{
     id:string | undefined ,
     sizes:string | undefined, 
-    price:number | undefined,
+    price:number,
     img: string | undefined, 
     brand: string | undefined, 
     name: string | undefined ,
