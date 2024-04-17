@@ -26,6 +26,10 @@ const Home: FC<HomeProps> = ({ productsData, setProductsData }) => {
       })
     );
   };
+
+
+
+  const buttonTailwindStyle = "relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300"
   return (
     <div className="flex flex-col items-center">
       <div className="w-[80%] sm:w-[70%] lg:flex-row flex-col gap-4 flex justify-between items-center">
@@ -38,7 +42,7 @@ const Home: FC<HomeProps> = ({ productsData, setProductsData }) => {
           </div>
           <button
             onClick={() => filterClothes("T-shirt")}
-            className="relative before:absolute before:bottom-0 before:left-0 before:border-[1px] before:w-full hover:before:border-black before:border-white duration-300"
+            className={buttonTailwindStyle}
           >
             T-shirt
           </button>

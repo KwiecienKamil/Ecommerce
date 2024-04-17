@@ -5,10 +5,9 @@ import Navbar from "./components/Navbar";
 import { AnimatePresence } from "framer-motion";
 import data from "./data/Data";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
 import ProductDetails from "./components/ProductDetails";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
 export type ProductProps = {
   id: string;
@@ -19,6 +18,7 @@ export type ProductProps = {
   name: string;
   category: string;
 };
+
 const App = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [productsData, setProductsData] = useState<ProductProps[]>(data);
@@ -43,7 +43,6 @@ const App = () => {
             />
           }
         />
-        <Route path="/login" element={<Login />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </>
